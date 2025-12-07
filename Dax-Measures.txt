@@ -1,0 +1,23 @@
+MoM Revenue Change = [T_Revenue] - [Total_Revenue_PM]
+
+MoM_Change% = DIVIDE([T_Revenue] - [Total_Revenue_PM], [Total_Revenue_PM])
+
+Profit% = [T_Profit]/[T_Revenue]
+
+T_Cost = SUM(Orders[Cost])
+
+T_Orders = COUNT(Orders[Order ID])
+
+T_Profit = ((SUM(Orders[Revenue])-SUM(Orders[Cost])))
+
+T_Revenue = SUM(Orders[Revenue])
+
+Total_Revenue_LY = CALCULATE([T_Revenue], SAMEPERIODLASTYEAR('Orders'[Date]))
+
+Total_Revenue_PM = CALCULATE([T_Revenue], DATEADD('Date Dim'[Date], -1, MONTH))
+
+Units_Sold = SUM(Orders[Units Sold])
+
+YoY_Growth% = DIVIDE([T_Revenue] - [Total_Revenue_LY], [Total_Revenue_LY])
+
+YoY_Revenue_Change = [T_Revenue] - [Total_Revenue_LY]
